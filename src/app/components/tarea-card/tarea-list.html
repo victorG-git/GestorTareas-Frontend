@@ -1,0 +1,23 @@
+<div class="card mb-3">
+<div class="card-body">
+
+<!-- Cabecera: título y tipo -->
+<div class="d-flex justify-content-between align-items-center mb-2">
+<h3 class="card-title h6 mb-0">{{ tarea.titulo }}</h3>
+@switch (tarea.tipo) {
+@case ('Simple') {
+<span class="badge bg-primary">Simple</span>
+}
+@case ('Recurrente') {
+<span class="badge bg-secondary">Recurrente</span>
+}
+}
+</div>
+
+<!-- Metadatos: usuario y fecha -->
+<div class="d-flex justify-content-between align-items-center">
+<span class="text-muted small">{{ tarea.nombreUsuario }}</span>
+@if (tarea.fechaLimite) {
+<span class="text-muted small">{{ tarea.fechaLimite }}</span>
+}
+</div>

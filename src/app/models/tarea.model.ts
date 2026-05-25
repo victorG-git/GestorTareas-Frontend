@@ -1,14 +1,28 @@
 import { dateTimestampProvider } from "rxjs/internal/scheduler/dateTimestampProvider";
 
 export interface TareaDto {
-    id:number;
-    titulo:string;
-    descripcion:string;
+    id: number;
+    titulo: string;
+    descripcion: string;
+
     fechaCreacion: Date;
-    fechaFinalizacion: Date;
-    fechaLimite: Date;
-    estado: boolean;
-    prioridad: boolean;
+    fechaFinalizacion?: Date;
+    fechaLimite?: Date;
+
+    estado: string;
+    prioridad: string;
+
+    usuarioId: number;
+    nombreUsuario: string;
+
+    tipoTarea: string;
+
+    frecuenciaDias?: number;
+    proximaEjecucion?: Date;
+
+    tareaPadreId?: number;
+
+    idsSubtareas: number[];
 }
 
 export interface UsuarioDto {

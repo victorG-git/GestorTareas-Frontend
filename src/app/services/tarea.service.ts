@@ -1,46 +1,61 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map, catchError} from 'rxjs/operators';
-import {of} from 'rxjs';
-import { TareaDto, PaginadoDto, CrearTareaDto} from '../models/tarea.model';
 
-@Injectable({ providedIn: 'root' })
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+import {
+  TareaDto,
+  PaginadoDto,
+  CrearTareaDto
+} from '../models/tarea.model';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class TareaService {
 
-private http = inject(HttpClient);
-private baseUrl = 'https://localhost:7001/api';
+  private http = inject(HttpClient);
 
-obtenerTareas() {
-    return this.http.get<PaginadoDto<TareaDto>>(
-        `${this.baseUrl}/tareas`
-   ).pipe(
-    map(respuesta => respuesta.datos),
-    catchError(error => {
-        console.error('Error al obtenr tareas:', error);
-        return of([]);
-    })
-   );
-}
+  private baseUrl = 'https://localhost:7001/api';
 
-obtenerTareaPorId(id:number){
-    return this.http.get<TareaDto>(`${this.baseUrl}/tareas/${id}`);
-    }
-}
+  obtenerTareas() {
 
-/*
+    return this.http.get<PaginadoDto<TareaDto[]>>(
+      `${this.baseUrl}/tareas`
+    ).pipe(
 
-crear(dto: CrearTareaDto){
-    return this.http.post(
-        `${this.baseUrl}/tareas`
-        dto
+      map(respuesta => respuesta.datos),
+
+      catchError(error => {
+
+        console.error('Error al obtener tareas:', error);
+
+        return of([] as TareaDto[]);
+      })
     );
-}
+  }
 
-actualizar(id: number, dto: CrearTareaDto){
+  obtenerTareaPorId(id: number) {
+
+    return this.http.get<TareaDto>(
+      `${this.baseUrl}/tareas/${id}`
+    );
+  }
+
+  crear(dto: CrearTareaDto) {
+
+    return this.http.post(
+      `${this.baseUrl}/tareas`,
+      dto
+    );
+  }
+
+  actualizar(id: number, dto: CrearTareaDto) {
+
     return this.http.put<void>(
-        `${this.baseUrl}/tareas/${id}`
-
-        dto
-    )
-}*/
-
+      `${this.baseUrl}/tareas/${id}`,
+      dto
+    );
+  }
+}

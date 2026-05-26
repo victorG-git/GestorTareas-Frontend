@@ -1,0 +1,83 @@
+<body>
+    <style>
+
+    body{
+      background-color:#f4f4f4;
+      font-family:Arial, sans-serif;
+    }
+
+    header{
+      background-color:#0077cc;
+    }
+
+    .menu a{
+      color:white !important;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .menu a:hover{
+      color:#00bfff !important;
+    }
+
+
+    .card-tarea{
+      background-color:white;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+
+      height:100%;
+    }
+
+    .card-tarea h2{
+      color:#0077cc;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+
+    .form-login{
+      background-color:white;
+      padding:30px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+
+    footer{
+      background-color:#222;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:50px;
+    }
+
+  </style>
+  <div id="header"></div>
+
+  <main class="container my-5">
+    CONTENIDO
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+</body>

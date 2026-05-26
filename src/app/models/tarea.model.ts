@@ -4,24 +4,17 @@ export interface TareaDto {
     id: number;
     titulo: string;
     descripcion: string;
-
     fechaCreacion: Date;
     fechaFinalizacion?: Date;
-    fechaLimite?: Date;
-
+    fechaLimite: Date;
     estado: string;
     prioridad: string;
-
     usuarioId: number;
     nombreUsuario: string;
-
     tipoTarea: string;
-
     frecuenciaDias?: number;
     proximaEjecucion?: Date;
-
     tareaPadreId?: number;
-
     idsSubtareas: number[];
 }
 

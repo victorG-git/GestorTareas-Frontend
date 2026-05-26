@@ -1,0 +1,18 @@
+<!-- tarea-card.component.html -->
+
+<!-- pipe date: muestra la fecha en formato europeo -->
+<span class="text-muted small">
+{{ tarea.fechaLimite | date:'dd/MM/yyyy' }}
+</span>
+
+<!-- pipe personalizado diasRestantes: mensaje legible para el usuario -->
+<span class="text-muted small">
+{{ tarea.fechaLimite | diasRestantes }}
+<!-- Resultados posibles:
+"15 días restantes"
+"Vence mañana"
+"Vence hoy"
+"Vencida hace 3 días"
+"Sin fecha límite"
+-->
+</span>

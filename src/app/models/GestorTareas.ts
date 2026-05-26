@@ -1,12 +1,23 @@
-import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
 
-@Injectable({providedIn: 'root'})
+import {
+  inject,
+  Injectable,
+  signal
+} from '@angular/core';
 
+import { AuthService } from '../services/auth.service';
+
+import { TareaDto } from '../models/tarea.model';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class TareaService {
 
-    private http = inject(HttpClient);
-//    private authService = inject(this.authService);
+  private http = inject(HttpClient);
 
-   // private _tareas = signal<TareaDto[]>([];)
+  private authService = inject(AuthService);
+
+  private _tareas = signal<TareaDto[]>([]);
 }

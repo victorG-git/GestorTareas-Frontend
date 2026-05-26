@@ -75,22 +75,20 @@
 
   <header>
 
-    <nav class="navbar navbar-expand-lg">
+    <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
 
-      <div class="container d-flex justify-content-center">
-
-        <div class="menu d-flex gap-4 py-3">
-
-          <a href="Inicio">Inicio</a>
-          <a href="Tareas">Tareas</a>
-          <a href="Login">Login</a>
-          <a href="Informacion">Contacto</a>
-
-        </div>
-
-      </div>
-
-    </nav>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+      
+    </script>
 
   </header>
 

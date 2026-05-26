@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { TareaCardComponent } from './tarea-card.component';
-import { TareaDto } from '../models/tarea.model';
+import { TareaCardComponent } from '../tarea-card.component';
+import { TareaDto } from '../../models/tarea.model';
 
 @Component({
     selector: 'app-tareas-list',
     standalone: true,
     imports: [TareaCardComponent],
-    templateUrl: './tareas-list.component.html'
+    templateUrl: '../tarea-card.component.ts'
 })
 export class TareasListComponent {
 

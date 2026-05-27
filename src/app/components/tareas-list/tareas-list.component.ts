@@ -1,53 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+
 import { TareaCardComponent } from '../tarea-card.component';
-import { TareaDto } from '../../models/tarea.model';
+
+import { TareaService } from '../../services/tareas.service';
 
 @Component({
     selector: 'app-tareas-list',
     standalone: true,
     imports: [TareaCardComponent],
-    templateUrl: '../tarea-card.component.ts'
+    templateUrl: './tareas-list.component.html'
 })
-export class TareasListComponent {
 
-    tareas: TareaDto[] = [
-        {
-            id: 1,
-            titulo: 'Preparar informe trimestral',
-            descripcion: 'Preparando informe',
+export class TareasListComponent implements OnInit {
 
-            fechaCreacion: new Date(),
-            fechaFinalizacion: undefined,
-            fechaLimite: new Date(),
+    tareaService = inject(TareaService);
 
-            estado: 'Pendiente',
-            prioridad: 'Alta',
+    ngOnInit(): void {
 
-            usuarioId: 1,
-            nombreUsuario: 'Ana Garcia',
-
-            tipoTarea: 'Simple',
-
-            frecuenciaDias: undefined,
-            proximaEjecucion: undefined,
-
-            tareaPadreId: undefined,
-
-            idsSubtareas: []
-        }
-    ];
+        this.tareaService.cargarTareas().subscribe();
+    }
 
     onCompletar(id: number): void {
 
-        const tarea = this.tareas.find(t => t.id === id);
-
-        if (tarea) {
-            tarea.estado = 'Completada';
-        }
+        this.tareaService.completar(id).subscribe();
     }
 
     onEliminar(id: number): void {
 
-        this.tareas = this.tareas.filter(t => t.id !== id);
+        this.tareaService.eliminar(id).subscribe();
     }
 }

@@ -1,18 +1,51 @@
-<!-- tarea-card.component.html -->
+<div class="card mb-3 shadow-sm">
 
-<!-- pipe date: muestra la fecha en formato europeo -->
-<span class="text-muted small">
-{{ tarea.fechaLimite | date:'dd/MM/yyyy' }}
-</span>
+    <div class="card-body">
 
-<!-- pipe personalizado diasRestantes: mensaje legible para el usuario -->
-<span class="text-muted small">
-{{ tarea.fechaLimite | diasRestantes }}
-<!-- Resultados posibles:
-"15 días restantes"
-"Vence mañana"
-"Vence hoy"
-"Vencida hace 3 días"
-"Sin fecha límite"
--->
-</span>
+        <h5 class="card-title">
+            {{ tarea.titulo }}
+        </h5>
+
+        <p class="card-text">
+            {{ tarea.descripcion }}
+        </p>
+
+        <!-- Fecha límite -->
+        <span class="text-muted small d-block">
+            {{ tarea.fechaLimite | date:'dd/MM/yyyy' }}
+        </span>
+
+        <!-- Pipe personalizado -->
+        <span class="text-muted small d-block">
+
+            {{
+                tarea.fechaLimite
+                    ? (tarea.fechaLimite | diasRestantes)
+                    : 'Sin fecha límite'
+            }}
+
+        </span>
+
+        <div class="mt-3">
+
+            <button
+                class="btn btn-success btn-sm me-2"
+                (click)="onCompletar()">
+
+                Completar
+
+            </button>
+
+            <button
+                class="btn btn-danger btn-sm"
+                (click)="onEliminar()">
+
+                Eliminar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

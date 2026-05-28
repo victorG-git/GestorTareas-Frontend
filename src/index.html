@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,57 +15,95 @@
     body{
       background-color:#f4f4f4;
       font-family:Arial, sans-serif;
+      margin:0;
     }
 
-    header{
-      background-color:#0077cc;
+    .contenido{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+      margin-top:50px;
     }
 
-    .menu a{
-      color:white !important;
-      font-weight:bold;
-      text-decoration:none;
+    .lista-tareas{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
     }
 
-    .menu a:hover{
-      color:#00bfff !important;
+    .tarea{
+      width:100%;
     }
 
+    @media (min-width:768px){
 
-    .card-tarea{
+      .tarea{
+        width:48%;
+      }
+
+    }
+
+    @media (min-width:992px){
+
+      .tarea{
+        width:31%;
+      }
+
+    }
+
+    .tarjeta{
       background-color:white;
       padding:20px;
       border-radius:10px;
       box-shadow:0 2px 8px rgba(0,0,0,0.1);
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-
       height:100%;
     }
 
-    .card-tarea h2{
+    .titulo{
       color:#0077cc;
       margin-bottom:15px;
-      font-size:24px;
     }
 
+    .estado{
+      display:inline-block;
+      margin-top:15px;
+      padding:8px 14px;
+      border-radius:20px;
+      font-size:14px;
+      font-weight:bold;
+    }
 
-    .form-login{
+    .progreso{
+      background-color:#ffc107;
+      color:black;
+    }
+
+    .pendiente{
+      background-color:#6c757d;
+      color:white;
+    }
+
+    .completado{
+      background-color:#198754;
+      color:white;
+    }
+
+    .login{
       background-color:white;
       padding:30px;
       border-radius:10px;
       box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      max-width:500px;
+      margin:auto;
+      margin-top:50px;
     }
 
+    .campo{
+      margin-bottom:20px;
+    }
 
-    footer{
-      background-color:#222;
-      color:white;
-      text-align:center;
-      padding:20px;
-      margin-top:50px;
+    .boton{
+      width:100%;
     }
 
   </style>
@@ -73,156 +112,103 @@
 
 <body>
 
-  <header>
+  <main class="contenido">
 
-    <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("header").innerHTML = data;
-      });
+    <section class="lista-tareas">
 
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
-      
-    </script>
+      <div class="tarea">
 
-  </header>
+        <article class="tarjeta">
 
-  <main class="container my-5">
+          <h2 class="titulo">
+            Diseñar Página Principal
+          </h2><q></q>
 
-    <section class="mb-5">
+          <p><b>Tipo:</b> Diseño Web</p>
 
-      <div class="row g-4">
+          <p><b>Descripción:</b> Crear la página principal del proyecto. </p>
 
-        <div class="col-md-6 col-lg-4 d-flex">
+          <p><b>Usuario:</b> Ana</p>
 
-          <article class="card-tarea w-100">
+          <p><b>Fecha:</b> 11/05/2026</p>
 
-            <div>
+          <span class="estado progreso"> En progreso </span>
 
-              <h2>Diseñar Página Principal</h2>
+        </article>
 
-              <p><strong>Tipo:</strong> Diseño Web</p>
-              <p><strong>Descripción:</strong> Crear la página principal del proyecto.</p>
-              <p><strong>Usuario:</strong> Ana</p>
-              <p><strong>Fecha:</strong> 11/05/2026</p>
+      </div>
 
-            </div>
+      <div class="tarea">
 
-            <span class="badge bg-warning text-dark mt-3">
-              En progreso
-            </span>
+        <article class="tarjeta">
 
-          </article>
+          <h2 class="titulo"> Crear Base de Datos </h2>
 
-        </div>
+          <p><b>Tipo:</b> Backend</p>
 
+          <p> <b>Descripción:</b> Diseñar tablas y relaciones. </p>
 
-        <div class="col-md-6 col-lg-4 d-flex">
+          <p><b>Usuario:</b> Carlos</p>
 
-          <article class="card-tarea w-100">
+          <p><b>Fecha:</b> 12/05/2026</p>
 
-            <div>
+          <span class="estado pendiente"> Pendiente </span>
 
-              <h2>Crear Base de Datos</h2>
+        </article>
 
-              <p><strong>Tipo:</strong> Backend</p>
-              <p><strong>Descripción:</strong> Diseñar tablas y relaciones.</p>
-              <p><strong>Usuario:</strong> Carlos</p>
-              <p><strong>Fecha:</strong> 12/05/2026</p>
+      </div>
 
-            </div>
+      <div class="tarea">
 
-            <span class="badge bg-secondary mt-3">
-              Pendiente
-            </span>
+        <article class="tarjeta">
 
-          </article>
+          <h2 class="titulo"> Implementar Login </h2>
 
-        </div>
+          <p><strong>Tipo:</strong> Frontend</p>
 
-        <div class="col-md-6 col-lg-4 d-flex">
+          <p> <b>Descripción:</b> Crear formulario de acceso. </p>
 
-          <article class="card-tarea w-100">
+          <p><b>Usuario:</b> Lucía</p>
 
-            <div>
+          <p><b>Fecha:</b> 13/05/2026</p>
 
-              <h2>Implementar Login</h2>
+          <span class="estado completado"> Completado </span>
 
-              <p><strong>Tipo:</strong> Frontend</p>
-              <p><strong>Descripción:</strong> Crear formulario de acceso.</p>
-              <p><strong>Usuario:</strong> Lucía</p>
-              <p><strong>Fecha:</strong> 13/05/2026</p>
-
-            </div>
-
-            <span class="badge bg-success mt-3">
-              Completado
-            </span>
-
-          </article>
-
-        </div>
+        </article>
 
       </div>
 
     </section>
 
-    <section class="d-flex justify-content-center">
+    <section class="login">
 
-      <div class="form-login col-12 col-md-8 col-lg-5">
+      <h2 class="text-center mb-4"> Iniciar Sesión </h2>
 
-        <h2 class="text-center mb-4">
-          Iniciar Sesión
-        </h2>
+      <form>
 
-        <form class="d-flex flex-column gap-3">
+        <div class="campo">
 
-          <div>
+          <label for="correo" class="form-label"> Correo electrónico </label>
 
-            <label for="correo" class="form-label">
-              Correo electrónico
-            </label>
+          <input type="email" id="correo" class="form-control" placeholder="Introduce tu email">
 
-            <input
-              type="email"
-              id="correo"
-              class="form-control"
-              placeholder="Introduce tu email">
+        </div>
 
-          </div>
+        <div class="campo">
 
-          <div>
+          <label for="clave" class="form-label"> Contraseña </label>
 
-            <label for="clave" class="form-label">
-              Contraseña
-            </label>
+          <input type="password" id="clave" class="form-control" placeholder="Introduce tu contraseña">
 
-            <input
-              type="password"
-              id="clave"
-              class="form-control"
-              placeholder="Introduce tu contraseña">
+        </div>
 
-          </div>
+        <button type="submit" class="btn btn-primary boton"> Entrar </button>
 
-          <button type="submit" class="btn btn-primary mt-3">
-            Entrar
-          </button>
-
-        </form>
-
-      </div>
+      </form>
 
     </section>
 
   </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
